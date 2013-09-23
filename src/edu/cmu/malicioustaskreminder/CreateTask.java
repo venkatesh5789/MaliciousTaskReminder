@@ -2,7 +2,9 @@ package edu.cmu.malicioustaskreminder;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
 
 public class CreateTask extends Activity {
 
@@ -17,6 +19,16 @@ public class CreateTask extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.create_task, menu);
 		return true;
+	}
+	
+	/**
+	 * Called when user clicks on button to create new task. Renders TaskDetails activity.
+	 * @param view
+	 */
+	
+	public void enterTaskDetails(View view) {
+		Intent intent = new Intent(this, TaskDetails.class);
+		startActivity(intent);
 	}
 
 }

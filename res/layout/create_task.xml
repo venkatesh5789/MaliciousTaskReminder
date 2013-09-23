@@ -17,6 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="false"
         android:layout_marginLeft="98dp"
+        android:onClick="enterTaskDetails"
         android:text="@string/new_task_button_string" />
 
 </RelativeLayout>
