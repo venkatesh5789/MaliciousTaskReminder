@@ -6,5 +6,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="new_task_button_string">Add New Task</string>
     <string name="title_activity_task_details">TaskDetails</string>
+    <string name="change_date_button">Change Date</string>
+    <string name="task_description">Description:</string>
+    <string name="from_time">From time:</string>
+    <string name="to_time">To Time:</string>
+    <string name="date">Date (M-D-YYYY):</string>
 
 </resources>

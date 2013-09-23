@@ -4,38 +4,78 @@
     android:layout_height="match_parent" >
 
     <TimePicker
-        android:id="@+id/timePicker1"
+        android:id="@+id/fromTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/editText1"
+        android:layout_below="@+id/taskDescription"
         android:layout_marginRight="16dp"
         android:layout_marginTop="24dp" />
 
     <TimePicker
-        android:id="@+id/timePicker2"
+        android:id="@+id/toTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/timePicker1"
-        android:layout_below="@+id/timePicker1"
+        android:layout_alignLeft="@+id/fromTime"
+        android:layout_below="@+id/fromTime"
         android:layout_marginTop="20dp" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/taskDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/timePicker1"
+        android:layout_alignLeft="@+id/fromTime"
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"
         android:ems="10" />
 
-    <DatePicker
-        android:id="@+id/datePicker1"
+    <TextView
+        android:id="@+id/fromTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editText1"
-        android:layout_below="@+id/timePicker2"
-        android:layout_marginRight="27dp"
-        android:layout_marginTop="30dp" />
+        android:layout_alignBottom="@+id/fromTime"
+        android:layout_marginBottom="42dp"
+        android:layout_marginRight="14dp"
+        android:layout_toLeftOf="@+id/fromTime"
+        android:text="@string/from_time"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/taskDescriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fromTime"
+        android:layout_alignLeft="@+id/fromTimeText"
+        android:text="@string/task_description"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/toTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toTime"
+        android:layout_alignLeft="@+id/fromTimeText"
+        android:layout_marginBottom="45dp"
+        android:text="@string/to_time"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/changeDateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@+id/fromTimeText"
+        android:text="@string/change_date_button" />
+
+    <TextView
+        android:id="@+id/selectedDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toTimeText"
+        android:layout_below="@+id/toTimeText"
+        android:layout_marginTop="20dp"
+        android:text="@string/date"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
