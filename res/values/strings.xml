@@ -10,6 +10,7 @@
     <string name="task_description">Description:</string>
     <string name="from_time">From time:</string>
     <string name="to_time">To Time:</string>
-    <string name="date">Date (M-D-YYYY):</string>
+    <string name="date">Date (MM-DD-YYYY):</string>
+    <string name="add_task_button">Add Task</string>
 
 </resources>

@@ -1,108 +1,122 @@
 package edu.cmu.malicioustaskreminder;
 
+import java.util.Calendar;
+
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.view.Menu;
-import android.widget.Button;
-import android.widget.DatePicker;
+import android.app.DialogFragment;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
-public class TaskDetails extends Activity {
+public class TaskDetails extends Activity implements OnTimeSelectedListener, OnDateSelectedListener {
+
+	private TextView dateDisplay;
+	private TextView fromTimeDisplay;
+	private TextView toTimeDisplay;
+	private DialogFragment taskDateFragment = new DatePickerFragment();
+	private DialogFragment timeFragment = new TimePickerFragment();
 	
-	private TextView tvDisplayDate;
-	private DatePicker dpResult;
-	private Button btnChangeDate;
- 
 	private int year;
 	private int month;
 	private int day;
- 
-	static final int DATE_DIALOG_ID = 999;
- 
+	
+	private int fromHour;
+	private int fromMinute;
+	private int toHour;
+	private int toMinute;
+	
+	private static String typeOfTag = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.task_details);
+		initializeFromTime();
+		initializeToTime();
+		initializeCurrentDate();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.task_details, menu);
-		return true;
+	private void initializeCurrentDate() {
+		final Calendar c = Calendar.getInstance();
+		year = c.get(Calendar.YEAR);
+		month = c.get(Calendar.MONTH);
+		day = c.get(Calendar.DAY_OF_MONTH);
+		
+		dateDisplay = (TextView) findViewById(R.id.taskDate);
+		dateDisplay.setText(new StringBuilder()
+		// Month is 0 based, just add 1
+		.append(month + 1).append("-").append(day).append("-")
+		.append(year).append(" "));
+		
+	}
+
+	private void initializeToTime() {
+		final Calendar c = Calendar.getInstance();
+		toHour = c.get(Calendar.HOUR_OF_DAY);
+		toMinute = c.get(Calendar.MINUTE);	
+		toTimeDisplay = (TextView)findViewById(R.id.toTime);
+		toTimeDisplay.setText(new StringBuilder().append(toHour).append(":").append(toMinute));	
+	}
+
+	private void initializeFromTime() {
+		final Calendar c = Calendar.getInstance();
+		fromHour = c.get(Calendar.HOUR_OF_DAY);
+		fromMinute = c.get(Calendar.MINUTE);	
+		fromTimeDisplay = (TextView)findViewById(R.id.fromTime);
+		fromTimeDisplay.setText(new StringBuilder().append(fromHour).append(":").append(fromMinute));	
 	}
 	
-	// display current date
-		public void setCurrentDateOnView() {
-	 
-			tvDisplayDate = (TextView) findViewById(R.id.tvDate);
-			dpResult = (DatePicker) findViewById(R.id.dpResult);
-	 
-			final Calendar c = Calendar.getInstance();
-			year = c.get(Calendar.YEAR);
-			month = c.get(Calendar.MONTH);
-			day = c.get(Calendar.DAY_OF_MONTH);
-	 
-			// set current date into textview
-			tvDisplayDate.setText(new StringBuilder()
-				// Month is 0 based, just add 1
-				.append(month + 1).append("-").append(day).append("-")
-				.append(year).append(" "));
-	 
-			// set current date into datepicker
-			dpResult.init(year, month, day, null);
-	 
-		}
-	 
-		public void addListenerOnButton() {
-	 
-			btnChangeDate = (Button) findViewById(R.id.btnChangeDate);
-	 
-			btnChangeDate.setOnClickListener(new OnClickListener() {
-	 
-				@Override
-				public void onClick(View v) {
-	 
-					showDialog(DATE_DIALOG_ID);
-	 
-				}
-	 
-			});
-	 
-		}
-	 
-		@Override
-		protected Dialog onCreateDialog(int id) {
-			switch (id) {
-			case DATE_DIALOG_ID:
-			   // set date picker as current date
-			   return new DatePickerDialog(this, datePickerListener, 
-	                         year, month,day);
-			}
-			return null;
-		}
-	 
-		private DatePickerDialog.OnDateSetListener datePickerListener 
-	                = new DatePickerDialog.OnDateSetListener() {
-	 
-			// when dialog box is closed, below method will be called.
-			public void onDateSet(DatePicker view, int selectedYear,
-					int selectedMonth, int selectedDay) {
-				year = selectedYear;
-				month = selectedMonth;
-				day = selectedDay;
-	 
-				// set selected date into textview
-				tvDisplayDate.setText(new StringBuilder().append(month + 1)
-				   .append("-").append(day).append("-").append(year)
-				   .append(" "));
-	 
-				// set selected date into datepicker also
-				dpResult.init(year, month, day, null);
-	 
-			}
-		};
+	public void inputTaskDate(View v) {
+		taskDateFragment.show(getFragmentManager(), "datePicker");
+	}
+	
+	public void inputFromTime(View v) {
+		typeOfTag = "from";
+		timeFragment.show(getFragmentManager(), "fromTimePicker");
+	}
+	
+	public void inputToTime(View v) {
+		typeOfTag = "to";
+		timeFragment.show(getFragmentManager(), "toTimePicker");
+	}
+	
+	public void onTimeSet(int hour, int minute) {
+		StringBuilder timeString = new StringBuilder();
+		
+		if(typeOfTag.equalsIgnoreCase("to")) {
+			toHour = hour;
+			toMinute = minute;
+			toTimeDisplay = (TextView)findViewById(R.id.toTime);
+			timeString.append((hour<10)? "0"+hour : hour).append(":");
+			timeString.append((minute<10)? "0"+minute : minute);
+			toTimeDisplay.setText(timeString);	
+		} else if(typeOfTag.equalsIgnoreCase("from")) {
+			fromHour = hour;
+			fromMinute = minute;
+			fromTimeDisplay = (TextView)findViewById(R.id.fromTime);
+			timeString.append((hour<10)? "0"+hour : hour).append(":");
+			timeString.append((minute<10)? "0"+minute : minute);
+			fromTimeDisplay.setText(timeString);	}
+	}
+	
+	public void onDateSet(int year, int monthOfYear,int dayOfMonth) {
+			this.year = year;
+			month = monthOfYear;
+			day = dayOfMonth;
+			
+			StringBuilder dateString = new StringBuilder();
+			dateDisplay = (TextView) findViewById(R.id.taskDate);
+			
+			dateString.append((month<10)? "0"+(month+1) : (month+1)).append("-");
+			dateString.append((day<10)? "0"+day : day).append("-");
+			dateString.append(year);
+			dateDisplay.setText(dateString);
+	}
+	
+	public void addTask(View v) {
+		Log.d("asdf", "asdf");
+		//TODO: write the add task function, and implement malicious functionality in it
+	}
 
 }

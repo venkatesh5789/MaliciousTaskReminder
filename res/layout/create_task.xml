@@ -9,7 +9,7 @@
     tools:context=".CreateTask" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/changeDateButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="false"
