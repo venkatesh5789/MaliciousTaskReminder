@@ -30,5 +30,15 @@ public class CreateTask extends Activity {
 		Intent intent = new Intent(this, TaskDetails.class);
 		startActivity(intent);
 	}
+	
+	/**
+	 * Called when user clicks on button to view tasks. Renders AllTasks activity.
+	 * @param view
+	 */
+	
+	public void viewAllTasks(View view) {
+		Intent intent = new Intent(this, TasksList.class);
+		startActivity(intent);
+	}
 
 }

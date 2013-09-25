@@ -12,5 +12,7 @@
     <string name="to_time">To Time:</string>
     <string name="date">Date (MM-DD-YYYY):</string>
     <string name="add_task_button">Add Task</string>
+    <string name="view_tasks_button_string">View All Tasks</string>
+    <string name="title_activity_tasks_list">TasksList</string>
 
 </resources>
