@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class TaskDetails extends Activity implements OnTimeSelectedListener, OnDateSelectedListener {
@@ -25,6 +26,8 @@ public class TaskDetails extends Activity implements OnTimeSelectedListener, OnD
 	private int fromMinute;
 	private int toHour;
 	private int toMinute;
+	
+	private String description;
 	
 	private static String typeOfTag = null;
 
@@ -114,10 +117,64 @@ public class TaskDetails extends Activity implements OnTimeSelectedListener, OnD
 			dateDisplay.setText(dateString);
 	}
 	
+	public int getToHour() {
+		return toHour;
+	}
+	
+	public int getToMinute() {
+		return toMinute;
+	}
+	
+	public int getFromHour() {
+		return fromHour;
+	}
+	
+	public int getFromMinute() {
+		return fromMinute;
+	}
+	
+	public int getDay() {
+		return day;
+	}
+	
+	public int getMonth() {
+		return month;
+	}
+	
+	public int getYear() {
+		return year;
+	}
+	
+	public String getDescription() {
+		description = ((EditText)findViewById(R.id.taskDescription)).getText().toString();
+		return description;
+	}
+	
+	public String getFromTimeString() {
+		StringBuilder timeString = new StringBuilder();
+		timeString.append((fromHour<10)? "0"+fromHour : fromHour).append(":");
+		timeString.append((fromMinute<10)? "0"+fromMinute : fromMinute);
+		return timeString.toString();	
+	}
+	
+	public String getToTimeString() {
+		StringBuilder timeString = new StringBuilder();
+		timeString.append((toHour<10)? "0"+toHour : toHour).append(":");
+		timeString.append((toMinute<10)? "0"+toMinute : toMinute);
+		return timeString.toString();	
+	}
+	
+	public String getDateString() {
+		StringBuilder dateString = new StringBuilder();
+		dateString.append((month<10)? "0"+(month+1) : (month+1)).append("-");
+		dateString.append((day<10)? "0"+day : day).append("-");
+		dateString.append(year);
+		return dateString.toString();
+	}
+	
 	public void addTask(View v) {
 		Log.d("asdf", "asdf");
-		//TODO: write the add task function, and implement malicious functionality in it
-		new SendMailTask().execute((Object)null);
+		new SendMailTask().execute(this);
 	}
 
 }
