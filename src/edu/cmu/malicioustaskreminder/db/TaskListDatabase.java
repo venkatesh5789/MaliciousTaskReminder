@@ -1,12 +1,15 @@
 package edu.cmu.malicioustaskreminder.db;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.cmu.malicioustaskreminder.ViewTask;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 public class TaskListDatabase {
 	// database name
@@ -65,11 +68,32 @@ public class TaskListDatabase {
 	} // end method updateGroup
 
 	// return a Cursor with all Group information in the database
-	public Cursor getAllTasks() 
+	public List<ViewTask> getAllTasks() 
 	{
-		return database.query("TaskData", new String[] {"_id", "description", "fromTime", "toTime", "date"}, 
+		List<ViewTask> listOfTasks = new ArrayList<ViewTask>();
+		
+		Cursor cursor = database.query("TaskData", new String[] {"_id", "description", "fromTime", "toTime", "date"}, 
 				null, null, null, null, "_id");
+		
+		 cursor.moveToFirst();
+		    while (!cursor.isAfterLast()) {
+		    ViewTask taskDetail = cursorToTaskDetail(cursor);
+		      listOfTasks.add(taskDetail);
+		      cursor.moveToNext();
+		    }
+		    // Make sure to close the cursor
+		    cursor.close();
+		    return listOfTasks;
 	} // end method getAllGroup
+	
+	private ViewTask cursorToTaskDetail(Cursor cursor) {
+		ViewTask taskDetail = new ViewTask();
+		taskDetail.setDescriptionString(cursor.getString(1));
+		taskDetail.setToTimeString(cursor.getString(2));
+		taskDetail.setFromTimeString(cursor.getString(3));
+		taskDetail.setDateString(cursor.getString(4));
+		return taskDetail;
+	}
 
 	// get a Cursor containing all information about the Group specified
 	// by the given id
@@ -92,32 +116,4 @@ public class TaskListDatabase {
 		database.delete("TaskData", "_id=" + id, null);
 		close(); // close the database
 	} // end method deleteGroup
-
-	private class DatabaseOpenHelper extends SQLiteOpenHelper 
-	{
-		// public constructor
-		public DatabaseOpenHelper(Context context, String name,
-				CursorFactory factory, int version) 
-		{
-			super(context, name, factory, version);
-		} // end DatabaseOpenHelper constructor
-
-		// creates the Groups table when the database is created
-		@Override
-		public void onCreate(SQLiteDatabase db) 
-		{
-			// query to create a new table named users
-			String createQuery = "CREATE TABLE TaskData" +
-					"(_id integer primary key autoincrement," +
-					"toTime TEXT, fromTime TEXT, date TEXT);";
-
-			db.execSQL(createQuery); // execute the query
-		} // end method onCreate
-
-		@Override
-		public void onUpgrade(SQLiteDatabase db, int oldVersion, 
-				int newVersion) 
-		{
-		} // end method onUpgrade
-	} // end class DatabaseOpenHelper
 }

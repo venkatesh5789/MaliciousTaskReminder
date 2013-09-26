@@ -14,5 +14,8 @@
     <string name="add_task_button">Add Task</string>
     <string name="view_tasks_button_string">View All Tasks</string>
     <string name="title_activity_tasks_list">TasksList</string>
+    <string name="title_activity_view_task">ViewTask</string>
+    <string name="email_friend_button">E-mail Task to friend</string>
+    <string name="friend_email">Friend E-mail ID</string>
 
 </resources>

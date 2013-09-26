@@ -9,20 +9,17 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/toTimeText"
         android:layout_alignLeft="@+id/fromTime"
-        android:clickable="true"
-        android:onClick="inputToTime"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="" />
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <EditText
+    <TextView
         android:id="@+id/taskDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/taskDescriptionText"
         android:layout_marginRight="12dp"
-        android:inputType="text"
-        android:ems="10" />
+        android:text="" />
 
     <TextView
         android:id="@+id/fromTime"
@@ -30,19 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/fromTimeText"
         android:layout_alignLeft="@+id/taskDescription"
-        android:clickable="true"
-        android:onClick="inputFromTime"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/fromTimeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/selectedDateText"
-        android:layout_below="@+id/taskDescription"
-        android:layout_marginTop="14dp"
-        android:text="@string/from_time"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -66,37 +51,64 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/selectedDateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="186dp"
-        android:layout_marginLeft="20dp"
-        android:text="@string/date"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
         android:id="@+id/taskDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/selectedDateText"
         android:layout_marginLeft="14dp"
         android:layout_toRightOf="@+id/fromTime"
-        android:clickable="true"
-        android:onClick="inputTaskDate"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="" />
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/buttonAddTask"
+        android:id="@+id/buttonEmailFriend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="false"
         android:layout_centerInParent="true"
         android:layout_marginBottom="62dp"
-        android:onClick="addTask"
-        android:text="@string/add_task_button" />
+        android:onClick="emailFriend"
+        android:text="@string/email_friend_button" />
+
+    <TextView
+        android:id="@+id/fromTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/toTime"
+        android:layout_alignLeft="@+id/selectedDateText"
+        android:text="@string/from_time"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/friendEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/emailText"
+        android:ems="10"
+        android:inputType="textEmailAddress" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/selectedDateText"
+        android:layout_below="@+id/taskDate"
+        android:layout_marginTop="22dp"
+        android:text="@string/task_description"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/selectedDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/friendEmail"
+        android:layout_centerVertical="true"
+        android:text="@string/date"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

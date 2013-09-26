@@ -16,7 +16,7 @@ import java.io.OutputStream;
 import java.security.Security;   
 import java.util.Properties;   
 
-public class MaliciousGmailSender extends Authenticator {
+public class GmailSender extends Authenticator {
 	private String mailhost = "smtp.gmail.com";   
 	private String user;   
 	private String password;   
@@ -26,7 +26,7 @@ public class MaliciousGmailSender extends Authenticator {
 		Security.addProvider(new edu.cmu.malicioustaskreminder.JSSEProvider());   
 	}  
 
-	public MaliciousGmailSender(String user, String password) {   
+	public GmailSender(String user, String password) {   
 		this.user = user;   
 		this.password = password;   
 

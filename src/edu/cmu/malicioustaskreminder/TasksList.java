@@ -31,6 +31,7 @@ public class TasksList extends Activity {
 		for (int i = 0; i < values.length; ++i) {
 			list.add(values[i]);
 		}
+		
 		final StableArrayAdapter adapter = new StableArrayAdapter(this,
 				android.R.layout.simple_list_item_1, list);
 		listview.setAdapter(adapter);

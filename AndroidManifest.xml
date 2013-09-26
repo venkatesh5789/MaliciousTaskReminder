@@ -34,6 +34,10 @@
             android:name="edu.cmu.malicioustaskreminder.TasksList"
             android:label="@string/title_activity_tasks_list" >
         </activity>
+        <activity
+            android:name="edu.cmu.malicioustaskreminder.ViewTask"
+            android:label="@string/title_activity_view_task" >
+        </activity>
     </application>
 
 </manifest>
