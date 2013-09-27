@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -51,6 +52,21 @@ public class ViewTask extends Activity implements Serializable {
 	public ViewTask() {
 	
 	}
+	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_home:
+			Intent intent = new Intent(getApplicationContext(), CreateTask.class);
+			startActivity(intent);
+			break;
+		default:
+			break;
+		}
+
+		return true;
+	} 
 	
 	private void setVisibleDisplays() {
 		descriptionDisplay = (TextView)findViewById(R.id.taskDescription);

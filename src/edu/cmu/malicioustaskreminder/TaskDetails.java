@@ -42,6 +42,21 @@ public class TaskDetails extends Activity implements OnTimeSelectedListener, OnD
 		initializeToTime();
 		initializeCurrentDate();
 	}
+	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_home:
+			Intent intent = new Intent(getApplicationContext(), CreateTask.class);
+			startActivity(intent);
+			break;
+		default:
+			break;
+		}
+
+		return true;
+	} 
 
 	private void initializeCurrentDate() {
 		final Calendar c = Calendar.getInstance();

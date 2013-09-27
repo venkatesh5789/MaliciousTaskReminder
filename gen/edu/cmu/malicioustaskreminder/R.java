@@ -24,7 +24,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000f;
+        public static final int action_home=0x7f08000f;
         public static final int addTasksButton=0x7f080000;
         public static final int allTasksListView=0x7f08000b;
         public static final int buttonAddTask=0x7f08000a;
@@ -54,7 +54,7 @@ public final class R {
         public static final int view_task=0x7f070003;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
+        public static final int action_home=0x7f050001;
         public static final int add_task_button=0x7f05000a;
         public static final int app_name=0x7f050000;
         public static final int change_date_button=0x7f050005;

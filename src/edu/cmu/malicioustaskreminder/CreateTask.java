@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 public class CreateTask extends Activity {
 
@@ -27,21 +25,7 @@ public class CreateTask extends Activity {
 	 * Called when user clicks on button to create new task. Renders TaskDetails activity.
 	 * @param view
 	 */
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.action_settings:
-			Toast.makeText(this, "Menu Item 1 selected", Toast.LENGTH_SHORT)
-			.show();
-			break;
-		default:
-			break;
-		}
-
-		return true;
-	} 
-	
+		
 	public void enterTaskDetails(View view) {
 		Intent intent = new Intent(this, TaskDetails.class);
 		startActivity(intent);
