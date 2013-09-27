@@ -99,7 +99,7 @@
         android:layout_alignLeft="@+id/selectedDateText"
         android:layout_below="@+id/taskDate"
         android:layout_marginTop="22dp"
-        android:text="@string/task_description"
+        android:text="@string/friend_email"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView

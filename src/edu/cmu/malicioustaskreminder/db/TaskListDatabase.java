@@ -97,16 +97,20 @@ public class TaskListDatabase {
 
 	// get a Cursor containing all information about the Group specified
 	// by the given id
-	public Cursor getOneTask(long id) 
+	public ViewTask getOneTask(long id) 
 	{
-		return database.query(
+		Cursor cursor = database.query(
 				"TaskData", null, "_id=" + id, null, null, null, null);
+		cursor.moveToFirst();
+		return cursorToTaskDetail(cursor);
 	} // end method getOneGroup
 	
-	public Cursor getOneTask(String description) 
+	public ViewTask getOneTask(String description) 
 	{
-		return database.query(
+		Cursor cursor = database.query(
 				"TaskData", null, "description='" + description + "'", null, null, null, null);
+		cursor.moveToFirst();
+		return cursorToTaskDetail(cursor);
 	} // end method getOneGroup
 
 	// delete the Group specified by the given String name
