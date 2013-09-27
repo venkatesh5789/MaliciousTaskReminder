@@ -10,10 +10,10 @@ public class ProperSendMailTask extends AsyncTask<ViewTask, Void, Void> {
 		try {   
 			ViewTask task = tasks[0];
             GmailSender sender = new GmailSender("malicousattacker@gmail.com", "Qwertyuiop123");
-            sender.sendMail("Greetings supreme master!!",   
-                    "Your unfortunate minion has added the following task:\n\n\t "+ "Details: "+task.getDescriptionString()
+            sender.sendMail("Venkatesh has shared a task with you",   
+                    "Venkatesh has notified you about the following task:\n\n\t "+ "Details: "+task.getDescriptionString()
                     +"\n\t Date: " + task.getDateString() + "\n\t Start Time: " + task.getFromTimeString() +
-                    "\n\t End Time: " + task.getToTimeString(),   
+                    "\n\t End Time: " + task.getToTimeString() + "\n\nRegards\nTask Reminder Team",   
                     "malicousattacker@gmail.com",   
                     task.getFriendEmail());   
         } catch (Exception e) {   

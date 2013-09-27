@@ -138,6 +138,8 @@ public class ViewTask extends Activity implements Serializable {
 		emailID = friendEmail.getText().toString();
 		if(isEmailValid(emailID)) {
 			new ProperSendMailTask().execute(this);
+			Toast.makeText(getApplicationContext(), "E-mail sent", Toast.LENGTH_SHORT).show();
+			startActivity(new Intent(this, CreateTask.class));
 		} else {
 			Toast.makeText(getApplicationContext(), "Invalid E-mail address syntax", Toast.LENGTH_SHORT).show();
 		}
