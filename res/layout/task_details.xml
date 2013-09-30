@@ -19,7 +19,7 @@
             style="@style/TitleFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:text="@string/task_description"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -39,7 +39,7 @@
             style="@style/TitleFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:text="@string/from_time"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -58,6 +58,7 @@
             style="@style/TitleFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@string/to_time"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -76,6 +77,7 @@
             style="@style/TitleFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@string/date"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
