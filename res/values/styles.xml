@@ -4,7 +4,7 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Black">
+    <style name="AppBaseTheme" parent="android:Theme.Holo">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -13,8 +13,20 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    <style name="AppTheme" parent="android:Theme.Holo">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->      
     </style>
+    
+          <style name="TitleFont" parent="@android:style/TextAppearance.Medium">
+            <item name="android:textColor">#FF0000</item>
+            <item name="android:typeface">serif</item>
+            <item name="android:textSize">22sp</item>
+        </style>
+                
+        <style name="TextFont" parent="@android:style/TextAppearance.Small">
+            <item name="android:textColor">#FFF0F0</item>
+            <item name="android:typeface">serif</item>
+            <item name="android:textSize">18sp</item>
+        </style>
 
 </resources>
