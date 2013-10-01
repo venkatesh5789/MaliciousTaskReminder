@@ -3,112 +3,115 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/toTime"
+    <LinearLayout
+        android:id="@+id/mainLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/toTimeText"
-        android:layout_alignLeft="@+id/fromTime"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:padding="10dp" >
 
-    <TextView
-        android:id="@+id/taskDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/taskDescriptionText"
-        android:layout_marginRight="12dp"
-        android:text="" />
+        <TextView
+            android:id="@+id/taskDescriptionText"
+            style="@style/TitleFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/task_description"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/fromTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/fromTimeText"
-        android:layout_alignLeft="@+id/taskDescription"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/taskDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:height="30dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:width="350dp" />
 
-    <TextView
-        android:id="@+id/taskDescriptionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/toTimeText"
-        android:layout_alignLeft="@+id/fromTimeText"
-        android:layout_marginBottom="87dp"
-        android:text="@string/task_description"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/fromTimeText"
+            style="@style/TitleFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/from_time"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/toTimeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/selectedDateText"
-        android:layout_alignLeft="@+id/fromTimeText"
-        android:layout_marginBottom="34dp"
-        android:text="@string/to_time"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/fromTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:height="30dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:width="120dp" />
 
-    <TextView
-        android:id="@+id/taskDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/selectedDateText"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/fromTime"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/toTimeText"
+            style="@style/TitleFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/to_time"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/toTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:height="30dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:width="120dp" />
+
+        <TextView
+            android:id="@+id/selectedDateText"
+            style="@style/TitleFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/date"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/taskDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:height="30dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:width="120dp" />
+
+        <TextView
+            android:id="@+id/emailText"
+            style="@style/TitleFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/friend_email"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/friendEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:height="30dp"
+            android:inputType="textEmailAddress"
+            android:width="350dp" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonEmailFriend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="false"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="62dp"
+        android:layout_below="@+id/mainLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/btnbackgrnd"
         android:onClick="emailFriend"
-        android:text="@string/email_friend_button" />
-
-    <TextView
-        android:id="@+id/fromTimeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/toTime"
-        android:layout_alignLeft="@+id/selectedDateText"
-        android:text="@string/from_time"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/friendEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/emailText"
-        android:ems="10"
-        android:inputType="textEmailAddress" >
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/emailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/selectedDateText"
-        android:layout_below="@+id/taskDate"
-        android:layout_marginTop="22dp"
-        android:text="@string/task_description"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/selectedDateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/friendEmail"
-        android:layout_centerVertical="true"
-        android:text="@string/date"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/email_friend_button"
+        android:typeface="serif" />
 
 </RelativeLayout>

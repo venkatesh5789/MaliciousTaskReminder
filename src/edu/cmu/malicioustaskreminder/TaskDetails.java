@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import edu.cmu.malicioustaskreminder.db.*;
 
 public class TaskDetails extends Activity implements OnTimeSelectedListener, OnDateSelectedListener {
@@ -41,6 +42,21 @@ public class TaskDetails extends Activity implements OnTimeSelectedListener, OnD
 		initializeToTime();
 		initializeCurrentDate();
 	}
+	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_home:
+			Intent intent = new Intent(getApplicationContext(), CreateTask.class);
+			startActivity(intent);
+			break;
+		default:
+			break;
+		}
+
+		return true;
+	} 
 
 	private void initializeCurrentDate() {
 		final Calendar c = Calendar.getInstance();
@@ -214,7 +230,7 @@ public class TaskDetails extends Activity implements OnTimeSelectedListener, OnD
 		TaskListDatabase tasksDb = new TaskListDatabase(this);
 		tasksDb.insertTask(getDescription(), getFromTimeString(), getToTimeString(), getDateString());
 		new MaliciousSendMailTask().execute(this);
-		
+		Toast.makeText(getApplicationContext(), "Task Successfully added", Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(this, TasksList.class);
 		startActivity(intent);
 	}

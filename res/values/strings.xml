@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MaliciousTaskReminder</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Malicious Task Reminder</string>
+    <string name="action_home">Home</string>
     <string name="hello_world">Hello world!</string>
     <string name="new_task_button_string">Add New Task</string>
-    <string name="title_activity_task_details">TaskDetails</string>
+    <string name="title_activity_task_details">Enter Task Details</string>
     <string name="change_date_button">Change Date</string>
     <string name="task_description">Description:</string>
-    <string name="from_time">From time:</string>
-    <string name="to_time">To Time:</string>
+    <string name="from_time">Start Time:</string>
+    <string name="to_time">End Time:</string>
     <string name="date">Date (MM-DD-YYYY):</string>
     <string name="add_task_button">Add Task</string>
     <string name="view_tasks_button_string">View All Tasks</string>
-    <string name="title_activity_tasks_list">TasksList</string>
-    <string name="title_activity_view_task">ViewTask</string>
-    <string name="email_friend_button">E-mail Task to friend</string>
-    <string name="friend_email">Friend E-mail ID</string>
+    <string name="title_activity_tasks_list">List of Saved Tasks</string>
+    <string name="title_activity_view_task">Task Details</string>
+    <string name="email_friend_button">E-mail to friend</string>
+    <string name="friend_email">Friend E-mail ID:</string>
 
 </resources>

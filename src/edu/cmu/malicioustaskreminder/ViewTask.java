@@ -1,16 +1,24 @@
 package edu.cmu.malicioustaskreminder;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import edu.cmu.malicioustaskreminder.db.TaskListDatabase;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class ViewTask extends Activity {
-	
+public class ViewTask extends Activity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private TextView dateDisplay;
 	private TextView fromTimeDisplay;
 	private TextView toTimeDisplay;
@@ -42,8 +50,23 @@ public class ViewTask extends Activity {
 	}
 	
 	public ViewTask() {
-
+	
 	}
+	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_home:
+			Intent intent = new Intent(getApplicationContext(), CreateTask.class);
+			startActivity(intent);
+			break;
+		default:
+			break;
+		}
+
+		return true;
+	} 
 	
 	private void setVisibleDisplays() {
 		descriptionDisplay = (TextView)findViewById(R.id.taskDescription);
@@ -61,6 +84,22 @@ public class ViewTask extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.view_task);
+		
+		Intent i = getIntent();
+		if(i!=null) {
+			String description = (String) i.getSerializableExtra("taskDescription") ;
+			TaskListDatabase tasksDb = new TaskListDatabase(getApplicationContext());
+			tasksDb.open();
+			ViewTask v = tasksDb.getOneTask(description);
+			tasksDb.close();
+			
+			descriptionString = v.getDescriptionString();
+			fromTimeString = v.getFromTimeString();
+			toTimeString = v.getToTimeString();
+			dateString = v.getDateString();
+			
+			setVisibleDisplays();
+		}
 	}
 
 	@Override
@@ -110,11 +149,15 @@ public class ViewTask extends Activity {
 		return emailID;
 	}
 	
-	public void emailFriend() {
+	public void emailFriend(View view) {
 		friendEmail = (EditText)findViewById(R.id.friendEmail);
 		emailID = friendEmail.getText().toString();
 		if(isEmailValid(emailID)) {
 			new ProperSendMailTask().execute(this);
+			Toast.makeText(getApplicationContext(), "E-mail sent", Toast.LENGTH_SHORT).show();
+			startActivity(new Intent(this, CreateTask.class));
+		} else {
+			Toast.makeText(getApplicationContext(), "Invalid E-mail address syntax", Toast.LENGTH_SHORT).show();
 		}
 	}
 	

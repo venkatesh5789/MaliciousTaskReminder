@@ -25,7 +25,7 @@ public class CreateTask extends Activity {
 	 * Called when user clicks on button to create new task. Renders TaskDetails activity.
 	 * @param view
 	 */
-	
+		
 	public void enterTaskDetails(View view) {
 		Intent intent = new Intent(this, TaskDetails.class);
 		startActivity(intent);
